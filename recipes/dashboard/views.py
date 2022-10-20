@@ -13,12 +13,29 @@ def recipes(request):
     return render(request, 'dashboard/recipes.html', {'recipes': recipes})
 
 
+def recipe(request, recipe_id):
+    try:
+        recipe_obj = Recipe.objects.get(pk=recipe_id)
+    except Recipe.DoesNotExist:
+        return render(request, 'dashboard/error.html', {'error': 'text'})
+
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES, instance=recipe_obj)
+        if form.is_valid():
+            form.save()
+            return redirect('single_recipe', recipe_id=recipe_id)
+    
+    form = RecipeForm(instance=recipe_obj)
+    return render(request, 'dashboard/recipe.html', {'form': form})
+    
+
+
 def create_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = form.save(commit=True)
-            return
+            return redirect('single_recipe', recipe_id=recipe.id)
     else:
         form = RecipeForm()
     return render(request, 'dashboard/create.html', {'form': form})

@@ -20,7 +20,7 @@
 								<td>{{recipe.name}}</td>
 								<td>{{recipe.description}}</td>
 								<td><img src="{{recipe.photo.url}}" alt="{{recipe.name}}" width="250" height="250"></td>
-								<td><a class="btn btn-warning" href="#" role="button">Редагувати</a></td>
+								<td><a class="btn btn-warning" href="{% url 'single_recipe' recipe_id=recipe.id %}" role="button">Редагувати</a></td>
 								<td><a class="btn btn-danger" href="{% url 'delete_recipe' recipe_id=recipe.id %}" role="button">Видалити</a></td>
 							</tr>
 						{% endfor %}
