@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import TelegramUser, Recipe
 
@@ -10,3 +10,8 @@ def index(request):
 def recipes(request):
     recipes = Recipe.objects.all().order_by('-id')
     return render(request, 'dashboard/recipes.html', {'recipes': recipes})
+
+
+def delete_recipe(request, recipe_id):
+    Recipe.objects.filter(id=recipe_id).delete()
+    return redirect('recipes')
