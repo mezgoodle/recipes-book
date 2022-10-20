@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import TelegramUser, Recipe
 from .forms import RecipeForm
 
+
 def index(request):
     users = TelegramUser.objects.all().order_by('-id')
     return render(request, 'dashboard/index.html', {'users': users})
@@ -17,7 +18,7 @@ def recipe(request, recipe_id):
     try:
         recipe_obj = Recipe.objects.get(pk=recipe_id)
     except Recipe.DoesNotExist:
-        return render(request, 'dashboard/error.html', {'error': 'text'})
+        return render(request, 'dashboard/error.html', {'error': 'Рецепту з таким номером не існує'})
 
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES, instance=recipe_obj)
@@ -26,7 +27,7 @@ def recipe(request, recipe_id):
             return redirect('single_recipe', recipe_id=recipe_id)
     
     form = RecipeForm(instance=recipe_obj)
-    return render(request, 'dashboard/recipe.html', {'form': form})
+    return render(request, 'dashboard/recipe.html', {'form': form, 'recipe': recipe_obj})
     
 
 

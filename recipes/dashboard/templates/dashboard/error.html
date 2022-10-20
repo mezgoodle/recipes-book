@@ -1,6 +1,6 @@
 {% extends 'dashboard/base.html' %}
 
-{% block title %}Помилка{% endblock %}
+{% block title %}Виникла помилка{% endblock %}
 {% block content %}
-	{{error}}
+	<div class="alert alert-danger" role="alert">{{error}}</div>
 {% endblock %}

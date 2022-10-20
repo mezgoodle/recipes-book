@@ -1,4 +1,3 @@
-from tabnanny import verbose
 from django.db import models
 
 class TelegramUser(models.Model):
@@ -7,7 +6,7 @@ class TelegramUser(models.Model):
     username = models.CharField(max_length=100, verbose_name='Юзернейм користувача в телеграмі')
     telegram_id = models.CharField(max_length=100, verbose_name='Айді користувача в телеграмі')
     questioned_name = models.CharField(max_length=100, verbose_name='Ім\'я користувача з анкети')
-    sex = models.CharField(max_length=100, verbose_name='Стать користувача в телеграмі') # TODO: maybe do as choice field
+    sex = models.CharField(max_length=100, verbose_name='Стать користувача в телеграмі')
 
     class Meta:
         verbose_name = 'Користувач'

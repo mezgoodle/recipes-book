@@ -1,6 +1,6 @@
 {% extends 'dashboard/base.html' %}
 
-{% block title %}Main page{% endblock %}
+{% block title %}Адмін-панель{% endblock %}
 {% block content %}
     <h1>Список користувачів</h1>
     {% if users %}
@@ -29,6 +29,6 @@
 					</tbody>
         </table>
     {% else %}
-        <h4>There are no users now</h4>
+        <h4>У БД немає користувачів</h4>
     {% endif %}
 {% endblock %}
