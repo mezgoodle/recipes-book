@@ -1,3 +1,15 @@
 from django.db import models
 
-# Create your models here.
+class TelegramUser(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Ім\'я користувача в телеграмі')
+    surname = models.CharField(max_length=100, verbose_name='Прізвище користувача в телеграмі')
+    username = models.CharField(max_length=100, verbose_name='Юзернейм користувача в телеграмі')
+    questioned_name = models.CharField(max_length=100, verbose_name='Ім\'я користувача з анкети')
+    sex = models.CharField(max_length=100, verbose_name='Стать користувача в телеграмі') # TODO: maybe do as choice field
+
+    class Meta:
+        verbose_name = 'Користувач'
+        verbose_name_plural = 'Користувачі'
+
+    def __str__(self):
+        return f'#{self.id} @{self.username}'
