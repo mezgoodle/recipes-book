@@ -2,15 +2,33 @@
 
 {% block title %}Main page{% endblock %}
 {% block content %}
-    <h1>Main page</h1>
-    {% if tasks %}
-        {% for task in tasks %}
-            <div class="alert alert-success mt-2">
-                <h3>{{task.title}}</h3>
-                <p>{{task.task}}</p>
-            </div>
-        {% endfor %}
+    <h1>Список користувачів</h1>
+    {% if users %}
+        <table class="table">
+					<thead>
+						<tr>
+								<th scope="col">Ім'я</th>
+								<th scope="col">Прізвище</th>
+								<th scope="col">Юзернейм</th>
+								<th scope="col">Ідентифікатор в тг</th>
+								<th scope="col">Ім'я з анкети</th>
+								<th scope="col">Стать</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users %}
+							<tr>
+								<td>{{user.name}}</td>
+								<td>{{user.surname}}</td>
+								<td>{{user.username}}</td>
+								<td>{{user.telegram_id}}</td>
+								<td>{{user.questioned_name}}</td>
+								<td>{{user.sex}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+        </table>
     {% else %}
-        <h4>We do not have tasks</h4>
+        <h4>There are no users now</h4>
     {% endif %}
 {% endblock %}

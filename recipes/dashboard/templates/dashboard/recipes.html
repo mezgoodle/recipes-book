@@ -1,0 +1,16 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Recipes page{% endblock %}
+{% block content %}
+    <h1>Recipes page</h1>
+    {% if tasks %}
+        {% for task in tasks %}
+            <div class="alert alert-success mt-2">
+                <h3>{{task.title}}</h3>
+                <p>{{task.task}}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4>We do not have tasks</h4>
+    {% endif %}
+{% endblock %}
