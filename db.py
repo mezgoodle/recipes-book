@@ -7,7 +7,7 @@ class Database:
     def __init__(self, db_file: str = 'recipes\db.sqlite3'):
         conn = None
         try:
-            conn = sqlite3.connect(db_file)
+            conn = sqlite3.connect(db_file, check_same_thread=False)
         except Error as e:
             raise Exception(e)
         self.conn = conn
@@ -23,11 +23,15 @@ class Database:
             result.append(row)
         return result
 
+    def get_recipe_info(self, recipe_name: str) -> tuple:
+        self.cur.execute("SELECT * FROM dashboard_recipe WHERE name=?", (recipe_name,))
+        recipe = self.cur.fetchall()
+        return recipe[0]
+        
     def get_user_info(self, tg_id: str) -> tuple:
         self.cur.execute("SELECT * FROM dashboard_telegramuser WHERE telegram_id=?", (tg_id,))
-
-        rows = self.cur.fetchall()
-        return rows
+        user = self.cur.fetchall()
+        return user[0]
 
     def create_user(self, user) -> int:
         sql = '''INSERT INTO telegramuser(name, surname, username, questioned_name, sex, telegram_id)
