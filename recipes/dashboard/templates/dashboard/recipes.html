@@ -1,16 +1,28 @@
 {% extends 'dashboard/base.html' %}
 
-{% block title %}Recipes page{% endblock %}
+{% block title %}Сторінка рецептів{% endblock %}
 {% block content %}
-    <h1>Recipes page</h1>
-    {% if tasks %}
-        {% for task in tasks %}
-            <div class="alert alert-success mt-2">
-                <h3>{{task.title}}</h3>
-                <p>{{task.task}}</p>
-            </div>
-        {% endfor %}
+    <h1>Список рецептів</h1>
+    {% if recipes %}
+        <table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Назва</th>
+							<th scope="col">Опис</th>
+							<th scope="col">Фото</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for recipe in recipes %}
+							<tr>
+								<td>{{recipe.name}}</td>
+								<td>{{recipe.description}}</td>
+								<td><img src="{{recipe.photo.url}}" alt="{{recipe.name}}" width="250" height="250"></td>
+							</tr>
+						{% endfor %}
+					</tbody>
+        </table>
     {% else %}
-        <h4>We do not have tasks</h4>
+        <h4>There are no recipes now</h4>
     {% endif %}
 {% endblock %}
