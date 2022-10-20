@@ -35,6 +35,3 @@ class Database:
         self.cur.execute(sql, user)
         self.conn.commit()
         return self.cur.lastrowid
-
-db = Database()
-print(db.get_user_info('1'))
