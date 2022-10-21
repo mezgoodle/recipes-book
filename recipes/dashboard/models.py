@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from django.db import models
 
 class TelegramUser(models.Model):
@@ -27,3 +28,8 @@ class Recipe(models.Model):
 
     def __str__(self):
         return f'@{self.name}'
+
+
+class State(models.Model):
+    telegram_id = models.CharField(max_length=20, verbose_name='Айді користувача в телеграмі')
+    state = models.CharField(max_length=20, verbose_name='Стан користувача')
