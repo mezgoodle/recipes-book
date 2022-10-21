@@ -27,7 +27,7 @@ class Recipe(models.Model):
         verbose_name_plural = 'Рецепти'
 
     def __str__(self):
-        return f'@{self.name}'
+        return f'{self.name}'
 
 
 class State(models.Model):
