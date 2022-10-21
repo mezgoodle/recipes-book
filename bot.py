@@ -4,7 +4,7 @@ import os
 from db import Database
 from states import State
 
-API_TOKEN = os.getenv('TOKEN', 'token')
+API_TOKEN = os.getenv('TOKEN', '5135575762:AAHdGW6cidFikmIKMKPVZjEpS0e8iAsmEwg')
 
 bot = telebot.TeleBot(API_TOKEN)
 db = Database()

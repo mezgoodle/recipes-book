@@ -4,7 +4,7 @@ from typing import List
 
 
 class Database:
-    def __init__(self, db_file: str = 'recipes\db.sqlite3'):
+    def __init__(self, db_file: str = 'db.sqlite3'):
         conn = None
         try:
             conn = sqlite3.connect(db_file, check_same_thread=False)

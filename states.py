@@ -48,7 +48,7 @@ def answer_mid_state(bot, message):
 
 def answer_recipe(bot, message):
     recipe = database.get_recipe_info(message.text)
-    photo = open('./recipes/media/' + recipe[3], 'rb')
+    photo = open('./media/' + recipe[3], 'rb')
     return bot.send_photo(message.chat.id, photo, recipe[2])
 
 
