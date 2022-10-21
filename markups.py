@@ -10,6 +10,14 @@ def create_sex_markup():
     return markup
 
 
+def create_main_markup():
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    first_btn = KeyboardButton('Про мене')
+    second_btn = KeyboardButton('Рецепти')
+    markup.add(first_btn, second_btn)
+    return markup
+
+
 def create_recipes_markup(recipes: List[tuple]):
     markup = ReplyKeyboardMarkup(resize_keyboard=True)
     for recipe in recipes:
